@@ -1,4 +1,5 @@
 import React from "react";
+
 class cartItem extends React.Component{
     constructor(){
         super();
@@ -11,6 +12,19 @@ class cartItem extends React.Component{
         } 
         // this.IncreaseQty= this.IncreaseQty.bind(this);
     }
+    //trying to code in syncronous
+    // testing(){
+    //     const promise = new Promise((resolve,reject)=>{
+    //         setTimeout(() =>{
+    //             resolve('done')
+    //         },1000);
+    //     })
+    //     promise.then(()=>{
+    //         this.setState({Qty:this.state.Qty+10});
+    //         this.setState({Qty:this.state.Qty+10});
+    //         console.log('state',this.state)
+    //     });
+    // }
    
     IncreaseQty =()=>{
         // console.log('this',this.state)
@@ -30,6 +44,8 @@ class cartItem extends React.Component{
            return{
             Qty:prevState.Qty-1
            } 
+        }, ()=>{
+            console.log(this.state);
         })
     }
    

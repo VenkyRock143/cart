@@ -13,9 +13,28 @@ class cartItem extends React.Component{
     }
    
     IncreaseQty =()=>{
-        console.log('this',this.state)
+        // console.log('this',this.state)
+        this.setState({
+            Qty:this.state.Qty+1
+        }, ()=>{
+            console.log(this.state);
+        }) 
+             
     }
+    DecreaseQty = () =>{
+        const {Qty} = this.state
+        if(Qty === 0){
+            return;
+        }
+        this.setState((prevState)=>{
+           return{
+            Qty:prevState.Qty-1
+           } 
+        })
+    }
+   
     render(){
+          
         const{price,title,Qty,image} = this.state;
         return(
             <div className="cart-item">
@@ -31,16 +50,17 @@ class cartItem extends React.Component{
                     <div className="cart-item-actions">
                         {/* Button */}
                         <img 
-                        alt="Decrease" 
-                        className="action-icons" 
-                        src="https://img.freepik.com/free-icon/minus_318-933890.jpg?size=626&ext=jpg&ga=GA1.1.1758758573.1683471146&semt=sph"/>
-                        <img 
                         alt="Increase" 
                         className="action-icons" 
                         src="https://img.freepik.com/free-icon/add_318-932318.jpg?size=626&ext=jpg&ga=GA1.1.1758758573.1683471146&semt=sph" 
                         onClick={this.IncreaseQty}
                         />
-                      
+                        <img 
+                        alt="Decrease" 
+                        className="action-icons" 
+                        src="https://img.freepik.com/free-icon/minus_318-933890.jpg?size=626&ext=jpg&ga=GA1.1.1758758573.1683471146&semt=sph"
+                        onClick={this.DecreaseQty}
+                        />
                         <img 
                         alt="Delete" 
                         className="action-icons" 

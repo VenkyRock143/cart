@@ -25,7 +25,7 @@ body {
 .action-icons:hover{
  cursor: pointer;
 }
-.App{
+.cart{
   display: flex;
   flex-direction: column;
 }

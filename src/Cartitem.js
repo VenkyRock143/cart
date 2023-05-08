@@ -1,17 +1,6 @@
 import React from "react";
 
-class cartItem extends React.Component{
-    constructor(){
-        super();
-        this.state = {
-            price : 999,
-            title : 'Mobile Phone',
-            Qty : 1,
-            image : 'https://img.freepik.com/free-photo/colorful-heart-air-balloon-shape-collection-concept-isolated-color-background-beautiful-heart-ball-event_90220-1047.jpg?size=626&ext=jpg&ga=GA1.1.1758758573.1683471146'
-
-        } 
-        // this.IncreaseQty= this.IncreaseQty.bind(this);
-    }
+class CartItem extends React.Component {
     //trying to code in syncronous
     // testing(){
     //     const promise = new Promise((resolve,reject)=>{
@@ -51,13 +40,14 @@ class cartItem extends React.Component{
    
     render(){
           
-        const{price,title,Qty,image} = this.state;
+        // const{price,title,Qty,image} = this.state;
+        console.log('this.props', this.props);
+        const{price,title,Qty,image} = this.props.product;
         return(
             <div className="cart-item">
+                {this.props.jsx}
                 <div className="left-block">
-                    <div style={styles.image}>
-                    <img src="{image}"/>
-                    </div>
+                    <img style={styles.image}/>    
                 </div>
                 <div className="right-block">
                     <div style={{fontSize: 25}}>{title}</div>
@@ -69,13 +59,13 @@ class cartItem extends React.Component{
                         alt="Increase" 
                         className="action-icons" 
                         src="https://img.freepik.com/free-icon/add_318-932318.jpg?size=626&ext=jpg&ga=GA1.1.1758758573.1683471146&semt=sph" 
-                        onClick={this.IncreaseQty}
+                        onClick={()=>this.props.IncreaseQty(this.props.product)}
                         />
                         <img 
                         alt="Decrease" 
                         className="action-icons" 
                         src="https://img.freepik.com/free-icon/minus_318-933890.jpg?size=626&ext=jpg&ga=GA1.1.1758758573.1683471146&semt=sph"
-                        onClick={this.DecreaseQty}
+                        onClick={()=>this.props.DecreaseQty(this.props.product)}
                         />
                         <img 
                         alt="Delete" 
@@ -97,4 +87,4 @@ const styles = {
     }
 }
 
-export default cartItem;
+export default CartItem;

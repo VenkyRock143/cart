@@ -15,34 +15,35 @@ class CartItem extends React.Component {
     //     });
     // }
    
-    IncreaseQty =()=>{
-        // console.log('this',this.state)
-        this.setState({
-            Qty:this.state.Qty+1
-        }, ()=>{
-            console.log(this.state);
-        }) 
+    // IncreaseQty =()=>{
+    //     // console.log('this',this.state)
+    //     this.setState({
+    //         Qty:this.state.Qty+1
+    //     }, ()=>{
+    //         console.log(this.state);
+    //     }) 
              
-    }
-    DecreaseQty = () =>{
-        const {Qty} = this.state
-        if(Qty === 0){
-            return;
-        }
-        this.setState((prevState)=>{
-           return{
-            Qty:prevState.Qty-1
-           } 
-        }, ()=>{
-            console.log(this.state);
-        })
-    }
+    // }
+    // DecreaseQty = () =>{
+    //     const {Qty} = this.state
+    //     if(Qty === 0){
+    //         return;
+    //     }
+    //     this.setState((prevState)=>{
+    //        return{
+    //         Qty:prevState.Qty-1
+    //        } 
+    //     }, ()=>{
+    //         console.log(this.state);
+    //     })
+    // }
    
     render(){
           
         // const{price,title,Qty,image} = this.state;
         console.log('this.props', this.props);
         const{price,title,Qty,image} = this.props.product;
+        const{product,IncreaseQty,DecreaseQty,Delete} = this.props;
         return(
             <div className="cart-item">
                 {this.props.jsx}
@@ -59,18 +60,19 @@ class CartItem extends React.Component {
                         alt="Increase" 
                         className="action-icons" 
                         src="https://img.freepik.com/free-icon/add_318-932318.jpg?size=626&ext=jpg&ga=GA1.1.1758758573.1683471146&semt=sph" 
-                        onClick={()=>this.props.IncreaseQty(this.props.product)}
+                        onClick={()=>IncreaseQty(product)}
                         />
                         <img 
                         alt="Decrease" 
                         className="action-icons" 
                         src="https://img.freepik.com/free-icon/minus_318-933890.jpg?size=626&ext=jpg&ga=GA1.1.1758758573.1683471146&semt=sph"
-                        onClick={()=>this.props.DecreaseQty(this.props.product)}
+                        onClick={()=>DecreaseQty(product)}
                         />
                         <img 
                         alt="Delete" 
                         className="action-icons" 
-                        src="https://img.freepik.com/free-icon/delete_318-901546.jpg?size=626&ext=jpg&ga=GA1.1.1758758573.1683471146&semt=sph"/>
+                        src="https://img.freepik.com/free-icon/delete_318-901546.jpg?size=626&ext=jpg&ga=GA1.1.1758758573.1683471146&semt=sph"
+                        onClick={()=>Delete(product.id)} />                  
                    </div>
                 </div>
             </div>

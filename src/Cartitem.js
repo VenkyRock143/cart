@@ -1,6 +1,6 @@
 import React from "react";
 
-class CartItem extends React.Component {
+const CartItem =(props)=> {
     //trying to code in syncronous
     // testing(){
     //     const promise = new Promise((resolve,reject)=>{
@@ -37,18 +37,16 @@ class CartItem extends React.Component {
     //         console.log(this.state);
     //     })
     // }
-   
-    render(){
+
           
         // const{price,title,Qty,image} = this.state;
-        console.log('this.props', this.props);
-        const{price,title,Qty,image} = this.props.product;
-        const{product,IncreaseQty,DecreaseQty,Delete} = this.props;
+    
+        const{price,title,Qty} =props.product;
+        const{product,IncreaseQty,DecreaseQty,Delete} =props;
         return(
             <div className="cart-item">
-                {this.props.jsx}
                 <div className="left-block">
-                    <img style={styles.image}/>    
+                    {<img src={product.image} style={styles.image} />  }  
                 </div>
                 <div className="right-block">
                     <div style={{fontSize: 25}}>{title}</div>
@@ -78,14 +76,14 @@ class CartItem extends React.Component {
             </div>
         );
     }
-}
+
 
 const styles = {
    image: {
         height: 110,
         width: 110,
         borderRadius: 4,
-        background: 'grey'
+        // background: '#ccc'
     }
 }
 
